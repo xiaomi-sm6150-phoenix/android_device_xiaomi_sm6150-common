@@ -30,14 +30,14 @@ import android.app.Activity;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragment;
-import androidx.preference.SwitchPreference;
+import androidx.preference.SwitchPreferenceCompat;
 
 public class DevicePreferenceFragment extends PreferenceFragment {
     private static final String OVERLAY_NO_FILL_PACKAGE = "org.lineageos.overlay.notch.nofill";
     private static final String KEY_PILL_STYLE_NOTCH = "pref_pill_style_notch";
 
     private IOverlayManager mOverlayService;
-    private SwitchPreference mPrefPillStyleNotch;
+    private SwitchPreferenceCompat mPrefPillStyleNotch;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -52,7 +52,7 @@ public class DevicePreferenceFragment extends PreferenceFragment {
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.device_prefs);
-        mPrefPillStyleNotch = (SwitchPreference) findPreference(KEY_PILL_STYLE_NOTCH);
+        mPrefPillStyleNotch = (SwitchPreferenceCompat) findPreference(KEY_PILL_STYLE_NOTCH);
         mPrefPillStyleNotch.setOnPreferenceChangeListener(PrefListener);
     }
 
